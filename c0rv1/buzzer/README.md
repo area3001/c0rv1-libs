@@ -1,0 +1,1 @@
+This code is based on ```https://github.com/fruch/micropython-buzzer```
