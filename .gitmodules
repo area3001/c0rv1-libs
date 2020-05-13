@@ -1,0 +1,6 @@
+[submodule "libs/ucryptoauthlib"]
+	path = libs/ucryptoauthlib
+	url = https://github.com/dmazzella/ucryptoauthlib
+[submodule "libs/Electronutlabs_CircuitPython_LIS2DH12"]
+	path = libs/Electronutlabs_CircuitPython_LIS2DH12
+	url = https://github.com/electronut/Electronutlabs_CircuitPython_LIS2DH12
