@@ -14,7 +14,16 @@ class AHT10:
     def __init__(self, i2c, address=0x38):
         self.i2c = i2c
         self.address = address
-    
+
+        self.calibrate()
+
+    def calibrate(self):
+        buf = bytearray(3)
+        buf[0] = AHT10_INIT_CMD
+        buf[1] = 0x08
+        buf[2] = 0x00
+        self.i2c.writeto(AHT10_ADDRESS, buf)
+
     def status(self):
         status = self.i2c.readfrom(self.address, 1)[0]
         return {
@@ -24,6 +33,13 @@ class AHT10:
             "calibrated": "{}".format((status & AHT10_STATUS_CALIBRATED_MASK) >> 3)
         }
 
+    def trigger(self):
+        buf = bytearray(3)
+        buf[0] = AHT10_TRIGGER_CMD
+        buf[1] = 0x33
+        buf[2] = 0x00
+        self.i2c.writeto(AHT10_ADDRESS, buf)
+
     def read(self):
         data = self.i2c.readfrom(self.address, 6)
         rh_data = data[1]<<12 | data[2]<<4 | data[3]>>4
@@ -31,6 +47,12 @@ class AHT10:
         t_data = (data[3] & 0x0F)<<16 | data[4]<<8 | data[5]
         t = ((t_data*200)/2**20)-50
         return t, rh
+
+    def temperature(self):
+        self.trigger()
+        while(self.busy()):
+            time.sleep_ms(100)
+        return self.read()
 
     def busy(self):
         status = self.i2c.readfrom(self.address, 1)[0]
