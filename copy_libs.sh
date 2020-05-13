@@ -13,4 +13,4 @@ cp -r "${LIBS_DIR}/ucryptoauthlib/cryptoauthlib" "${PACKAGE_DIR}/cryptoauthlib"
 
 # -- Accelero
 echo " - Accelerometer (LIS2DH12)"
-cp -r "${LIBS_DIR}/Electronutlabs_CircuitPython_LIS2DH12/electronutlabs_lis2dh12.py" "${PACKAGE_DIR}/lis2dh12.py"
+cp -r "${LIBS_DIR}/micropython-lis2hh12/lis2hh12.py" "${PACKAGE_DIR}/lis2hh12.py"

@@ -19,9 +19,9 @@ class AHT10:
         status = self.i2c.readfrom(self.address, 1)[0]
         return {
             "status": "{:#010b}".format(status),
-            "busy": (s & AHT10_STATUS_BUSY_MASK) >> 7),
-            "mode": (s & AHT10_STATUS_MODE_MASK) >> 5),
-            "calibrated": (s & AHT10_STATUS_CALIBRATED_MASK) >> 3)
+            "busy": "{}".format((s & AHT10_STATUS_BUSY_MASK) >> 7),
+            "mode": "{}".format((s & AHT10_STATUS_MODE_MASK) >> 5),
+            "calibrated": "{}".format((s & AHT10_STATUS_CALIBRATED_MASK) >> 3)
         }
 
     def read(self):

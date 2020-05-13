@@ -1,3 +1,6 @@
 [submodule "libs/ucryptoauthlib"]
 	path = libs/ucryptoauthlib
 	url = https://github.com/dmazzella/ucryptoauthlib
+[submodule "libs/micropython-lis2hh12"]
+	path = libs/micropython-lis2hh12
+	url = https://github.com/tuupola/micropython-lis2hh12

@@ -1,7 +1,7 @@
-from buzzer import BuzzerPlayer
+from .buzzer import BuzzerPlayer
 import machine, neopixel
-from lis2dh12 import LIS2DH12_I2C
-from aht10 import AHT10
+from .lis2hh12 import LIS2HH12
+from .aht10 import AHT10
 
 PIN_BUZZER = 32
 PIN_NEOPIXEL = 2
@@ -18,5 +18,5 @@ class C0rv1:
         self.pixels = neopixel.NeoPixel(machine.Pin(PIN_NEOPIXEL), 5)
 
         self.i2c = machine.I2C(scl=machine.Pin(PIN_I2C_SCL), sda=machine.Pin(PIN_I2C_SDA), freq=100000)
-        self.acc = LIS2DH12_I2C(i2c, address=I2C_ADDR_LIS2D)
-        self.aht10 = AHT10(i2c, address=I2C_ADDR_AHT10)
+        self.acc = LIS2HH12(self.i2c, address=I2C_ADDR_LIS2D)
+        self.aht10 = AHT10(self.i2c, address=I2C_ADDR_AHT10)
